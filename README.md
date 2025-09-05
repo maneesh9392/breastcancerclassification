@@ -1,3 +1,9 @@
 # breastcancerclassification
 -I have done this project using Breakhis datset which is publicly available in kaggle.
 -Leveraging the DenseNet121 architecture pre-trained on the ImageNet dataset for transfer learning by utilizing its convolutional base as a fixed feature extractor or for fine-tuning downstream tasks.
+
+This architecture is designed as a two-stage hierarchical deep learning model for breast cancer histopathology image classification. In the first stage, the model performs a binary classification to determine whether an image belongs to the benign or malignant class. The backbone is DenseNet121, from which intermediate feature maps (conv3_block12_concat, conv4_block24_concat, conv5_block16_concat) are extracted to capture multi-scale visual patterns. Each feature branch is processed with global average pooling, normalization, dense layers with L2 regularization, and batch normalization, ensuring both fine-grained and high-level representations are learned. These features are then fused and passed through dense layers with dropout, leading to a softmax output for binary prediction.
+
+In the second stage, once the primary class is identified, a separate multi-class classifier is triggered to predict one of the four subtypes within that class (e.g., adenosis, fibroadenoma, phyllodes tumor, and tubular adenoma for benign; ductal, lobular, mucinous, and papillary carcinoma for malignant). This stage follows the same fusion-based architecture but with a final softmax layer sized for four outputs instead of two. Together, this pipeline ensures that the system first makes a coarse decision (benign vs malignant) and then a fine-grained decision (subtype classification), enabling more interpretable and clinically useful outcomes.
+
+👉 Essentially, this makes the model a hierarchical cancer classifier that combines binary diagnosis and subtype classification in a structured way.
