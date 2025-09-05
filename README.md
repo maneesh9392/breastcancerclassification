@@ -1,4 +1,4 @@
-# breastcancerclassification
+# Breast Cancer Classification:
 -I have done this project using Breakhis datset which is publicly available in kaggle.
 -Leveraging the DenseNet121 architecture pre-trained on the ImageNet dataset for transfer learning by utilizing its convolutional base as a fixed feature extractor or for fine-tuning downstream tasks.
 
@@ -7,6 +7,8 @@ This architecture is designed as a two-stage hierarchical deep learning model fo
 In the second stage, once the primary class is identified, a separate multi-class classifier is triggered to predict one of the four subtypes within that class (e.g., adenosis, fibroadenoma, phyllodes tumor, and tubular adenoma for benign; ductal, lobular, mucinous, and papillary carcinoma for malignant). This stage follows the same fusion-based architecture but with a final softmax layer sized for four outputs instead of two. Together, this pipeline ensures that the system first makes a coarse decision (benign vs malignant) and then a fine-grained decision (subtype classification), enabling more interpretable and clinically useful outcomes.
 
 👉 Essentially, this makes the model a hierarchical cancer classifier that combines binary diagnosis and subtype classification in a structured way.
+
+**bccmodelupd(1).ipynb** is the main code note book.
 
 # GAN implementation:
 Since you’re working on hierarchical breast cancer classification, one of the key challenges is class imbalance, where some subtypes (both benign and malignant) have fewer samples compared to others. This imbalance can cause the model to overfit majority classes while underperforming on underrepresented subtypes. To address this, you have implemented a Generative Adversarial Network (GAN) to synthesize new histopathology images for the minority subtypes.
@@ -19,3 +21,4 @@ This augmentation strategy enhances feature diversity, reduces bias toward major
 
 You notice the accuracy difference between the benign and malignant subtypes,the reason behind it is I have implemented GAN to generate systhesized images of BENIGN subtypes to make a balanced dataset,and i have not implemented it on MALIGNANT subtypes. 
 
+**pt gan(2).ipynb** is the GAN code to generate synthesized images.
